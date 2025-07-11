@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:17.5
+    container_name: mailhole-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: mailhole
+      POSTGRES_PASSWORD: mailhole
+      POSTGRES_DB: mailhole
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  mailhole:
+    build: .
+    container_name: mailhole-app
+    depends_on:
+      - postgres
+    environment:
+      DB_URL: postgres://mailhole:mailhole@postgres:5432/mailhole?sslmode=disable
+      SMTP_ADDR: :2525
+      HTTP_ADDR: :8080
+    ports:
+      - "8080:8080"
+      - "2525:2525"
+
+volumes:
+  postgres_data:

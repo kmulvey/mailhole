@@ -1,0 +1,8 @@
+From: verify@example.com
+To: kevin@example.com
+Subject: PaperlessPost Verification email
+
+Please click here:
+https://example.com
+https://example.com/wedding
+https://example.com/pricing
