@@ -44,6 +44,12 @@ curl -s "http://localhost:8080/emails/kevin@example.com/messages/last" | jq
    [Install Atlas](https://atlasgo.io/getting-started/install) or run:
    ```sh
    curl -sSf https://atlasgo.sh | sh
-2. psql -U postgres -c 'CREATE DATABASE mailhole;'
-3. atlas migrate apply --dir file://db/migrations --url postgres://mailhole:mailhole@localhost:5432/mailhole?sslmode=disable
-4. atlas migrate apply --dir file://db/migrations --url postgres://mailhole:mailhole@localhost:5432/mailhole?sslmode=disable --baseline 20250709231344
+2. **Create the database**
+   ```sh
+   psql -U postgres -c 'CREATE DATABASE mailhole;'
+4. **Apply migrations**
+   ```sh
+   atlas migrate apply --dir file://db/migrations --url postgres://mailhole:mailhole@localhost:5432/mailhole?sslmode=disable
+5. **(Optional) Baseline an existing database**
+   ```sh
+   atlas migrate apply --dir file://db/migrations --url postgres://mailhole:mailhole@localhost:5432/mailhole?sslmode=disable --baseline 20250709231344
