@@ -4,9 +4,13 @@
 
 ```
 docker compose up --build
+
 # in a different terminal
+
 cd testdata
+
 curl -s "smtp://localhost:2525"   --mail-from "verify@example.com"   --mail-rcpt "kevin@example.com"   --upload-file email.txt
+
 curl -s "http://localhost:8080/emails/kevin@example.com/messages/last" | jq
 {
   "id": 307,
