@@ -1,4 +1,5 @@
 # mailhole
+A mock SMTP server and REST API to capture and validate emails sent by your application. 
 
 ## REST API
 | Method | Path                                         | Description                        |
