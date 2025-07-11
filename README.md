@@ -37,3 +37,13 @@ curl -s "http://localhost:8080/emails/kevin@example.com/messages/last" | jq
 | GET    | `/emails/:recipient/messages`                | List all messages for recipient    |
 | GET    | `/emails/:recipient/messages/:which`         | Get a specific message (by index, "first", or "last") |
 | GET    | `/emails/:recipient/stream`                  | WebSocket stream for new messages  |
+
+## Database Setup
+
+1. **Install Atlas**
+   [Install Atlas](https://atlasgo.io/getting-started/install) or run:
+   ```sh
+   curl -sSf https://atlasgo.sh | sh
+2. psql -U postgres -c 'CREATE DATABASE mailhole;'
+3. atlas migrate apply --dir file://db/migrations --url postgres://mailhole:mailhole@localhost:5432/mailhole?sslmode=disable
+4. atlas migrate apply --dir file://db/migrations --url postgres://mailhole:mailhole@localhost:5432/mailhole?sslmode=disable --baseline 20250709231344
